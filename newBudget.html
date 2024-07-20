@@ -180,14 +180,7 @@
 </html>
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Planner with Gemini AI</title>
-    <style>
-        body {
+<!-- body {
             font-family: Arial, sans-serif;
             position: relative;
             background-color: #f0f0f0;
@@ -259,90 +252,5 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-<div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
-</div>
+        } -->
 
-<div class="container">
-    <h1>Budget Planner</h1>
-    <form id="budgetForm">
-        <label for="budget">Budget</label>
-        <input type="text" id="budget" name="budget" placeholder="Enter your budget" required>
-
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" placeholder="Enter your city" required>
-
-        <label for="plans">Plans</label>
-        <textarea id="plans" name="plans" rows="4" placeholder="Enter your plans" required></textarea>
-
-        <label for="timeFrame">Time Frame</label>
-        <select id="timeFrame" name="timeFrame" required>
-            <option value="true">Weekly</option>
-            <option value="false">Monthly</option>
-        </select>
-
-        <button type="submit">Submit</button>
-    </form>
-    <div id="responseContainer" class="response" style="display: none;"></div>
-</div>
-
-<script type="importmap">
-    {
-        "imports": {
-            "@google/generative-ai": "https://esm.run/@google/generative-ai"
-        }
-    }
-</script>
-<script type="module">
-    import { GoogleGenerativeAI } from "@google/generative-ai";
-
-    const API_KEY = "AIzaSyB3GRRnXnOsnRJOhPpLQtWvKf4Bs1Hx-nU"; // Replace with your actual API key
-
-    const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-1.0-pro" });
-
-    document.getElementById('budgetForm').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        const budget = document.getElementById('budget').value;
-        const city = document.getElementById('city').value;
-        const plans = document.getElementById('plans').value;
-        const timeFrame = document.getElementById('timeFrame').value === 'true' ? 'weekly' : 'monthly';
-
-        const promptMsg = `Plan a budget for ${timeFrame} with $${budget} in ${city}. The plans are: ${plans}`;
-
-        try {
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            loadingOverlay.style.display = 'flex';
-
-            const result = await model.generateContent(promptMsg);
-            const response = await result.response;
-            const text = await response.text();
-
-            const formattedResponse = formatResponse(text);
-            displayResponse(formattedResponse);
-        } catch (error) {
-            displayResponse('Error: ' + error.message);
-        } finally {
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            loadingOverlay.style.display = 'none';
-        }
-    });
-
-    function formatResponse(text) {
-        text = text.replace(/\*\*/g, '').replace(/\* /g, '');
-        return text;
-    }
-
-    function displayResponse(responseText) {
-        const responseContainer = document.getElementById('responseContainer');
-        responseContainer.style.display = 'block';
-        responseContainer.innerText = responseText || 'No response from Gemini AI';
-    }
-</script>
-</body>
-</html> -->
